@@ -1,7 +1,20 @@
+function initialize() {
+   initMap();
+}
+
+function initMap() {
+	var map = new google.maps.Map(document.getElementById('map'), {
+	zoom: 13,
+	center: {lat: 51.507347, lng: -0.127782}  
+	});
+	var geocoder = new google.maps.Geocoder();
+	document.getElementById('submit').addEventListener('click', function() {
+	getDistance(map);
+	});
+}
 
 
-
-function getDistance() {
+function getDistance(map) {
    var lat1 = document.getElementById("p1_lat").value;
    var lon1 = document.getElementById("p1_lon").value;
    var lat2 = document.getElementById("p2_lat").value;
@@ -16,7 +29,31 @@ function getDistance() {
    document.getElementById("distance_meters").innerHTML = distance_in_meters+" m";
    document.getElementById("distance_feet").innerHTML = distance_in_feet+" ft";
 
+   addMarker(cord1,map);
+   addMarker(cord2,map);
+   map.panTo(cord1);
+   var bounds = new google.maps.LatLngBounds();
+	bounds.extend(cord1);
+	bounds.extend(cord2);
+	map.fitBounds(bounds);
+
+	var line = new google.maps.Polyline({
+    path: [
+        cord1, 
+        cord2
+    ],
+    strokeColor: "#FF0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 5,
+    map: map
+});
 };
 
 
 
+function addMarker(coord,map) {
+	var marker = new google.maps.Marker({
+          position: coord,
+          map: map
+        });
+};
