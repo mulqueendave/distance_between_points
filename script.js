@@ -19,6 +19,7 @@ function getDistance(map) {
    var lon1 = document.getElementById("p1_lon").value;
    var lat2 = document.getElementById("p2_lat").value;
    var lon2 = document.getElementById("p2_lon").value;
+   var time = document.getElementById("time").value;
 
    var cord1 = new google.maps.LatLng(lat1, lon1);
    var cord2 = new google.maps.LatLng(lat2, lon2);
@@ -26,9 +27,13 @@ function getDistance(map) {
    var distance = google.maps.geometry.spherical.computeDistanceBetween(cord2, cord1);
    var distance_in_meters = Math.round(distance).toFixed(0);
    var distance_in_feet = Math.round(3.2808*distance_in_meters).toFixed(0);
+   var avg_speed_in_kph = Math.((time/60)/distance_in_meters)
+   var avg_speed_in_mph = Math.((time/60)/distance_in_feet)
    document.getElementById("distance_meters").innerHTML = distance_in_meters+" m";
    document.getElementById("distance_feet").innerHTML = distance_in_feet+" ft";
-
+   document.getElementById("avg_speed_kph").innerHTML = avg_speed_in_kph;
+   document.getElementById("avg_speed_mph").innerHTML = avg_speed_in_mph;
+	
    addMarker(cord1,map);
    addMarker(cord2,map);
    map.panTo(cord1);
