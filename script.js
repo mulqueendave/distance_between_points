@@ -27,8 +27,9 @@ function getDistance(map) {
    var distance = google.maps.geometry.spherical.computeDistanceBetween(cord2, cord1);
    var distance_in_meters = Math.round(distance).toFixed(0);
    var distance_in_feet = Math.round(3.2808*distance_in_meters).toFixed(0);
-   var avg_speed_in_kph = Math.((time/60)/distance_in_meters)
-   var avg_speed_in_mph = Math.((time/60)/distance_in_feet)
+   var avg_speed_in_kph = Math.((time/60)/distance_in_meters);
+   var avg_speed_in_mph = Math.((time/60)/distance_in_feet);
+   console.log(avg_speed_in_kph);
    document.getElementById("distance_meters").innerHTML = distance_in_meters+" m";
    document.getElementById("distance_feet").innerHTML = distance_in_feet+" ft";
    document.getElementById("avg_speed_kph").innerHTML = avg_speed_in_kph;
