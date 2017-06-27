@@ -22,12 +22,18 @@
                 </div>
                 <br/>
                 <div class="form-group">
+                  <label>Time (optional)</label>
+                  <input type="text" class="form-control" id="p2_lat" placeholder="Lat">
+                  <br/>
+                  <input type="text" class="form-control" id="p2_lon" placeholder="Lon">
+                  <br/>
+                </div>
+                <div class="form-group">
                   <label>Point 2</label>
                   <input type="text" class="form-control" id="p2_lat" placeholder="Lat">
                   <br/>
                   <input type="text" class="form-control" id="p2_lon" placeholder="Lon">
                   <br/>
-                  <input type="text" class="form-control" id="time" placeholder="Time">
                 </div>
                 <hr/>
                 <button type="button" id="submit"  class="btn btn-default btn-primary">Submit</button>
@@ -45,9 +51,19 @@
             <div class="panel-heading">Distance in feet</div>
             <div class="panel-body">
               <span id="distance_feet"></span>
-
             </div>
           </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Average speed in kph</div>
+            <div class="panel-body">
+              <span id="avg_speed_kph"></span>
+            </div>
+          </div>
+          <div class="panel-heading">Average speed in mph</div>
+            <div class="panel-body">
+              <span id="avg_speed_mph"></span>
+            </div>
+          </div>           
         </div>
       </div>
     </div>
